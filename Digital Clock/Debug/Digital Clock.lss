@@ -1,0 +1,2071 @@
+
+Digital Clock.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000a72  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         000000de  00800060  00000a72  00000b06  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000004  0080013e  0080013e  00000be4  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000be4  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c14  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000f0  00000000  00000000  00000c50  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000013cd  00000000  00000000  00000d40  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000b69  00000000  00000000  0000210d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000bef  00000000  00000000  00002c76  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001b4  00000000  00000000  00003868  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000066a  00000000  00000000  00003a1c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000009b6  00000000  00000000  00004086  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000068  00000000  00000000  00004a3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	11 e0       	ldi	r17, 0x01	; 1
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 e7       	ldi	r30, 0x72	; 114
+  68:	fa e0       	ldi	r31, 0x0A	; 10
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ae 33       	cpi	r26, 0x3E	; 62
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	21 e0       	ldi	r18, 0x01	; 1
+  78:	ae e3       	ldi	r26, 0x3E	; 62
+  7a:	b1 e0       	ldi	r27, 0x01	; 1
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a2 34       	cpi	r26, 0x42	; 66
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 b7 01 	call	0x36e	; 0x36e <main>
+  8a:	0c 94 37 05 	jmp	0xa6e	; 0xa6e <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <BTN_Init>:
+
+static BtnStates State[NUM_OF_BTNS];
+
+
+void BTN_Init(void)
+{
+  92:	ef 92       	push	r14
+  94:	ff 92       	push	r15
+  96:	0f 93       	push	r16
+  98:	1f 93       	push	r17
+  9a:	cf 93       	push	r28
+  9c:	df 93       	push	r29
+  9e:	c0 e6       	ldi	r28, 0x60	; 96
+  a0:	d0 e0       	ldi	r29, 0x00	; 0
+  a2:	0e e3       	ldi	r16, 0x3E	; 62
+  a4:	11 e0       	ldi	r17, 0x01	; 1
+  a6:	0f 2e       	mov	r0, r31
+  a8:	f8 e6       	ldi	r31, 0x68	; 104
+  aa:	ef 2e       	mov	r14, r31
+  ac:	f0 e0       	ldi	r31, 0x00	; 0
+  ae:	ff 2e       	mov	r15, r31
+  b0:	f0 2d       	mov	r31, r0
+	uint8_t LoopIndex;
+	for(LoopIndex = 0; LoopIndex < NUM_OF_BTNS; LoopIndex++)
+	{
+	    if(BtnConfigData[LoopIndex].ConnType == ACTIVE_HIGH)
+  b2:	89 81       	ldd	r24, Y+1	; 0x01
+  b4:	81 30       	cpi	r24, 0x01	; 1
+  b6:	29 f4       	brne	.+10     	; 0xc2 <BTN_Init+0x30>
+	    {
+	        GPIO_Write(BtnConfigData[LoopIndex].BtnId, 0x00);
+  b8:	60 e0       	ldi	r22, 0x00	; 0
+  ba:	88 81       	ld	r24, Y
+  bc:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+  c0:	04 c0       	rjmp	.+8      	; 0xca <BTN_Init+0x38>
+	    }
+	    else
+	    {
+	        GPIO_Write(BtnConfigData[LoopIndex].BtnId, 0xFF);
+  c2:	6f ef       	ldi	r22, 0xFF	; 255
+  c4:	88 81       	ld	r24, Y
+  c6:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+	    }
+	    State[LoopIndex] = BTN_OFF;
+  ca:	f8 01       	movw	r30, r16
+  cc:	11 92       	st	Z+, r1
+  ce:	8f 01       	movw	r16, r30
+  d0:	22 96       	adiw	r28, 0x02	; 2
+
+
+void BTN_Init(void)
+{
+	uint8_t LoopIndex;
+	for(LoopIndex = 0; LoopIndex < NUM_OF_BTNS; LoopIndex++)
+  d2:	ce 15       	cp	r28, r14
+  d4:	df 05       	cpc	r29, r15
+  d6:	69 f7       	brne	.-38     	; 0xb2 <BTN_Init+0x20>
+	    {
+	        GPIO_Write(BtnConfigData[LoopIndex].BtnId, 0xFF);
+	    }
+	    State[LoopIndex] = BTN_OFF;
+	}
+}
+  d8:	df 91       	pop	r29
+  da:	cf 91       	pop	r28
+  dc:	1f 91       	pop	r17
+  de:	0f 91       	pop	r16
+  e0:	ff 90       	pop	r15
+  e2:	ef 90       	pop	r14
+  e4:	08 95       	ret
+
+000000e6 <BTN_GetBtnState>:
+
+void BTN_GetBtnState(uint8_t u8BtnId, uint8_t* pu8BtnStatePtr)
+{
+  e6:	ef 92       	push	r14
+  e8:	ff 92       	push	r15
+  ea:	0f 93       	push	r16
+  ec:	1f 93       	push	r17
+  ee:	cf 93       	push	r28
+  f0:	df 93       	push	r29
+  f2:	1f 92       	push	r1
+  f4:	cd b7       	in	r28, 0x3d	; 61
+  f6:	de b7       	in	r29, 0x3e	; 62
+  f8:	7b 01       	movw	r14, r22
+	uint8_t Data;
+	GPIO_Read(BtnConfigData[u8BtnId].BtnId, &Data);
+  fa:	08 2f       	mov	r16, r24
+  fc:	10 e0       	ldi	r17, 0x00	; 0
+  fe:	f8 01       	movw	r30, r16
+ 100:	ee 0f       	add	r30, r30
+ 102:	ff 1f       	adc	r31, r31
+ 104:	e0 5a       	subi	r30, 0xA0	; 160
+ 106:	ff 4f       	sbci	r31, 0xFF	; 255
+ 108:	be 01       	movw	r22, r28
+ 10a:	6f 5f       	subi	r22, 0xFF	; 255
+ 10c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 10e:	80 81       	ld	r24, Z
+ 110:	0e 94 91 01 	call	0x322	; 0x322 <GPIO_Read>
+	switch(State[u8BtnId])
+ 114:	f8 01       	movw	r30, r16
+ 116:	e2 5c       	subi	r30, 0xC2	; 194
+ 118:	fe 4f       	sbci	r31, 0xFE	; 254
+ 11a:	80 81       	ld	r24, Z
+ 11c:	81 30       	cpi	r24, 0x01	; 1
+ 11e:	81 f1       	breq	.+96     	; 0x180 <BTN_GetBtnState+0x9a>
+ 120:	38 f0       	brcs	.+14     	; 0x130 <BTN_GetBtnState+0x4a>
+ 122:	82 30       	cpi	r24, 0x02	; 2
+ 124:	09 f4       	brne	.+2      	; 0x128 <BTN_GetBtnState+0x42>
+ 126:	55 c0       	rjmp	.+170    	; 0x1d2 <BTN_GetBtnState+0xec>
+ 128:	83 30       	cpi	r24, 0x03	; 3
+ 12a:	09 f4       	brne	.+2      	; 0x12e <BTN_GetBtnState+0x48>
+ 12c:	7b c0       	rjmp	.+246    	; 0x224 <BTN_GetBtnState+0x13e>
+ 12e:	a4 c0       	rjmp	.+328    	; 0x278 <BTN_GetBtnState+0x192>
+	{
+	    case BTN_OFF:
+	    {
+	        if(Data != 0)
+ 130:	89 81       	ldd	r24, Y+1	; 0x01
+ 132:	88 23       	and	r24, r24
+ 134:	91 f0       	breq	.+36     	; 0x15a <BTN_GetBtnState+0x74>
+	        {
+	            if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 136:	f8 01       	movw	r30, r16
+ 138:	ee 0f       	add	r30, r30
+ 13a:	ff 1f       	adc	r31, r31
+ 13c:	e0 5a       	subi	r30, 0xA0	; 160
+ 13e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 140:	81 81       	ldd	r24, Z+1	; 0x01
+ 142:	81 30       	cpi	r24, 0x01	; 1
+ 144:	29 f4       	brne	.+10     	; 0x150 <BTN_GetBtnState+0x6a>
+	            {
+	                State[u8BtnId] = BTN_JPRSD;
+ 146:	f8 01       	movw	r30, r16
+ 148:	e2 5c       	subi	r30, 0xC2	; 194
+ 14a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 14c:	80 83       	st	Z, r24
+ 14e:	94 c0       	rjmp	.+296    	; 0x278 <BTN_GetBtnState+0x192>
+	            }
+	            else
+	            {
+	                State[u8BtnId] = BTN_OFF;
+ 150:	f8 01       	movw	r30, r16
+ 152:	e2 5c       	subi	r30, 0xC2	; 194
+ 154:	fe 4f       	sbci	r31, 0xFE	; 254
+ 156:	10 82       	st	Z, r1
+ 158:	8f c0       	rjmp	.+286    	; 0x278 <BTN_GetBtnState+0x192>
+	            }
+	        }
+	        else
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 15a:	f8 01       	movw	r30, r16
+ 15c:	ee 0f       	add	r30, r30
+ 15e:	ff 1f       	adc	r31, r31
+ 160:	e0 5a       	subi	r30, 0xA0	; 160
+ 162:	ff 4f       	sbci	r31, 0xFF	; 255
+ 164:	81 81       	ldd	r24, Z+1	; 0x01
+ 166:	81 30       	cpi	r24, 0x01	; 1
+ 168:	29 f4       	brne	.+10     	; 0x174 <BTN_GetBtnState+0x8e>
+                {
+                    State[u8BtnId] = BTN_OFF;
+ 16a:	f8 01       	movw	r30, r16
+ 16c:	e2 5c       	subi	r30, 0xC2	; 194
+ 16e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 170:	10 82       	st	Z, r1
+ 172:	82 c0       	rjmp	.+260    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_JPRSD;
+ 174:	81 e0       	ldi	r24, 0x01	; 1
+ 176:	f8 01       	movw	r30, r16
+ 178:	e2 5c       	subi	r30, 0xC2	; 194
+ 17a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 17c:	80 83       	st	Z, r24
+ 17e:	7c c0       	rjmp	.+248    	; 0x278 <BTN_GetBtnState+0x192>
+	        }
+	    }
+	    break;
+	    case BTN_JPRSD:
+	    {
+	        if(Data != 0)
+ 180:	89 81       	ldd	r24, Y+1	; 0x01
+ 182:	88 23       	and	r24, r24
+ 184:	99 f0       	breq	.+38     	; 0x1ac <BTN_GetBtnState+0xc6>
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 186:	f8 01       	movw	r30, r16
+ 188:	ee 0f       	add	r30, r30
+ 18a:	ff 1f       	adc	r31, r31
+ 18c:	e0 5a       	subi	r30, 0xA0	; 160
+ 18e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 190:	81 81       	ldd	r24, Z+1	; 0x01
+ 192:	81 30       	cpi	r24, 0x01	; 1
+ 194:	31 f4       	brne	.+12     	; 0x1a2 <BTN_GetBtnState+0xbc>
+                {
+                    State[u8BtnId] = BTN_ON;
+ 196:	83 e0       	ldi	r24, 0x03	; 3
+ 198:	f8 01       	movw	r30, r16
+ 19a:	e2 5c       	subi	r30, 0xC2	; 194
+ 19c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 19e:	80 83       	st	Z, r24
+ 1a0:	6b c0       	rjmp	.+214    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_OFF;
+ 1a2:	f8 01       	movw	r30, r16
+ 1a4:	e2 5c       	subi	r30, 0xC2	; 194
+ 1a6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1a8:	10 82       	st	Z, r1
+ 1aa:	66 c0       	rjmp	.+204    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+	        }
+	        else
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 1ac:	f8 01       	movw	r30, r16
+ 1ae:	ee 0f       	add	r30, r30
+ 1b0:	ff 1f       	adc	r31, r31
+ 1b2:	e0 5a       	subi	r30, 0xA0	; 160
+ 1b4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1b6:	81 81       	ldd	r24, Z+1	; 0x01
+ 1b8:	81 30       	cpi	r24, 0x01	; 1
+ 1ba:	29 f4       	brne	.+10     	; 0x1c6 <BTN_GetBtnState+0xe0>
+                {
+                    State[u8BtnId] = BTN_OFF;
+ 1bc:	f8 01       	movw	r30, r16
+ 1be:	e2 5c       	subi	r30, 0xC2	; 194
+ 1c0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1c2:	10 82       	st	Z, r1
+ 1c4:	59 c0       	rjmp	.+178    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_ON;
+ 1c6:	83 e0       	ldi	r24, 0x03	; 3
+ 1c8:	f8 01       	movw	r30, r16
+ 1ca:	e2 5c       	subi	r30, 0xC2	; 194
+ 1cc:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1ce:	80 83       	st	Z, r24
+ 1d0:	53 c0       	rjmp	.+166    	; 0x278 <BTN_GetBtnState+0x192>
+	        }
+	    }
+	    break;
+	    case BTN_JRLSD:
+	    {
+	        if(Data != 0)
+ 1d2:	89 81       	ldd	r24, Y+1	; 0x01
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	99 f0       	breq	.+38     	; 0x1fe <BTN_GetBtnState+0x118>
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 1d8:	f8 01       	movw	r30, r16
+ 1da:	ee 0f       	add	r30, r30
+ 1dc:	ff 1f       	adc	r31, r31
+ 1de:	e0 5a       	subi	r30, 0xA0	; 160
+ 1e0:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1e2:	81 81       	ldd	r24, Z+1	; 0x01
+ 1e4:	81 30       	cpi	r24, 0x01	; 1
+ 1e6:	31 f4       	brne	.+12     	; 0x1f4 <BTN_GetBtnState+0x10e>
+                {
+                    State[u8BtnId] = BTN_ON;
+ 1e8:	83 e0       	ldi	r24, 0x03	; 3
+ 1ea:	f8 01       	movw	r30, r16
+ 1ec:	e2 5c       	subi	r30, 0xC2	; 194
+ 1ee:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1f0:	80 83       	st	Z, r24
+ 1f2:	42 c0       	rjmp	.+132    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_OFF;
+ 1f4:	f8 01       	movw	r30, r16
+ 1f6:	e2 5c       	subi	r30, 0xC2	; 194
+ 1f8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1fa:	10 82       	st	Z, r1
+ 1fc:	3d c0       	rjmp	.+122    	; 0x278 <BTN_GetBtnState+0x192>
+                }
+	        }
+	        else
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 1fe:	f8 01       	movw	r30, r16
+ 200:	ee 0f       	add	r30, r30
+ 202:	ff 1f       	adc	r31, r31
+ 204:	e0 5a       	subi	r30, 0xA0	; 160
+ 206:	ff 4f       	sbci	r31, 0xFF	; 255
+ 208:	81 81       	ldd	r24, Z+1	; 0x01
+ 20a:	81 30       	cpi	r24, 0x01	; 1
+ 20c:	29 f4       	brne	.+10     	; 0x218 <BTN_GetBtnState+0x132>
+                {
+                    State[u8BtnId] = BTN_OFF;
+ 20e:	f8 01       	movw	r30, r16
+ 210:	e2 5c       	subi	r30, 0xC2	; 194
+ 212:	fe 4f       	sbci	r31, 0xFE	; 254
+ 214:	10 82       	st	Z, r1
+ 216:	30 c0       	rjmp	.+96     	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_ON;
+ 218:	83 e0       	ldi	r24, 0x03	; 3
+ 21a:	f8 01       	movw	r30, r16
+ 21c:	e2 5c       	subi	r30, 0xC2	; 194
+ 21e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 220:	80 83       	st	Z, r24
+ 222:	2a c0       	rjmp	.+84     	; 0x278 <BTN_GetBtnState+0x192>
+	        }
+	    }
+	    break;
+	    case BTN_ON:
+	    {
+	        if(Data != 0)
+ 224:	89 81       	ldd	r24, Y+1	; 0x01
+ 226:	88 23       	and	r24, r24
+ 228:	a1 f0       	breq	.+40     	; 0x252 <BTN_GetBtnState+0x16c>
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 22a:	f8 01       	movw	r30, r16
+ 22c:	ee 0f       	add	r30, r30
+ 22e:	ff 1f       	adc	r31, r31
+ 230:	e0 5a       	subi	r30, 0xA0	; 160
+ 232:	ff 4f       	sbci	r31, 0xFF	; 255
+ 234:	81 81       	ldd	r24, Z+1	; 0x01
+ 236:	81 30       	cpi	r24, 0x01	; 1
+ 238:	31 f4       	brne	.+12     	; 0x246 <BTN_GetBtnState+0x160>
+                {
+                    State[u8BtnId] = BTN_ON;
+ 23a:	83 e0       	ldi	r24, 0x03	; 3
+ 23c:	f8 01       	movw	r30, r16
+ 23e:	e2 5c       	subi	r30, 0xC2	; 194
+ 240:	fe 4f       	sbci	r31, 0xFE	; 254
+ 242:	80 83       	st	Z, r24
+ 244:	19 c0       	rjmp	.+50     	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_JRLSD;
+ 246:	82 e0       	ldi	r24, 0x02	; 2
+ 248:	f8 01       	movw	r30, r16
+ 24a:	e2 5c       	subi	r30, 0xC2	; 194
+ 24c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 24e:	80 83       	st	Z, r24
+ 250:	13 c0       	rjmp	.+38     	; 0x278 <BTN_GetBtnState+0x192>
+                }
+	        }
+	        else
+	        {
+                if(BtnConfigData[u8BtnId].ConnType == ACTIVE_HIGH)
+ 252:	f8 01       	movw	r30, r16
+ 254:	ee 0f       	add	r30, r30
+ 256:	ff 1f       	adc	r31, r31
+ 258:	e0 5a       	subi	r30, 0xA0	; 160
+ 25a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 25c:	81 81       	ldd	r24, Z+1	; 0x01
+ 25e:	81 30       	cpi	r24, 0x01	; 1
+ 260:	31 f4       	brne	.+12     	; 0x26e <BTN_GetBtnState+0x188>
+                {
+                    State[u8BtnId] = BTN_JRLSD;
+ 262:	82 e0       	ldi	r24, 0x02	; 2
+ 264:	f8 01       	movw	r30, r16
+ 266:	e2 5c       	subi	r30, 0xC2	; 194
+ 268:	fe 4f       	sbci	r31, 0xFE	; 254
+ 26a:	80 83       	st	Z, r24
+ 26c:	05 c0       	rjmp	.+10     	; 0x278 <BTN_GetBtnState+0x192>
+                }
+                else
+                {
+                    State[u8BtnId] = BTN_ON;
+ 26e:	83 e0       	ldi	r24, 0x03	; 3
+ 270:	f8 01       	movw	r30, r16
+ 272:	e2 5c       	subi	r30, 0xC2	; 194
+ 274:	fe 4f       	sbci	r31, 0xFE	; 254
+ 276:	80 83       	st	Z, r24
+                }
+	        }
+	    }
+	    break;
+	}
+	*pu8BtnStatePtr = State[u8BtnId];
+ 278:	f8 01       	movw	r30, r16
+ 27a:	e2 5c       	subi	r30, 0xC2	; 194
+ 27c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 27e:	80 81       	ld	r24, Z
+ 280:	f7 01       	movw	r30, r14
+ 282:	80 83       	st	Z, r24
+}
+ 284:	0f 90       	pop	r0
+ 286:	df 91       	pop	r29
+ 288:	cf 91       	pop	r28
+ 28a:	1f 91       	pop	r17
+ 28c:	0f 91       	pop	r16
+ 28e:	ff 90       	pop	r15
+ 290:	ef 90       	pop	r14
+ 292:	08 95       	ret
+
+00000294 <GPIO_Init>:
+
+static uint8_t GPIO_GroupState[GPIO_GROUPS_NUMBER] = {0};
+
+/*A function to initialize all the GPIO Groups in the configurations*/
+GPIO_CheckType GPIO_Init(void)
+{
+ 294:	a4 e7       	ldi	r26, 0x74	; 116
+ 296:	b0 e0       	ldi	r27, 0x00	; 0
+ 298:	44 ed       	ldi	r20, 0xD4	; 212
+ 29a:	50 e0       	ldi	r21, 0x00	; 0
+	uint8_t ErrorFlag = 0;
+	GPIO_CheckType RetVar;
+	const GPIO_CfgType *CfgPtr;
+	for(LoopIndex = 0; ((LoopIndex < GPIO_GROUPS_NUMBER) && (ErrorFlag == 0)); LoopIndex ++)
+	{
+		if(GPIO_ConfigParam[LoopIndex].PortId < PORTS_NUMBER)
+ 29c:	ec 91       	ld	r30, X
+ 29e:	e4 30       	cpi	r30, 0x04	; 4
+ 2a0:	a8 f4       	brcc	.+42     	; 0x2cc <GPIO_Init+0x38>
+		{
+			CfgPtr = &GPIO_ConfigParam[LoopIndex];
+			DDR_R(CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortDirection);
+ 2a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a4:	e4 59       	subi	r30, 0x94	; 148
+ 2a6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2a8:	e0 81       	ld	r30, Z
+ 2aa:	f0 e0       	ldi	r31, 0x00	; 0
+ 2ac:	90 81       	ld	r25, Z
+ 2ae:	11 96       	adiw	r26, 0x01	; 1
+ 2b0:	2c 91       	ld	r18, X
+ 2b2:	11 97       	sbiw	r26, 0x01	; 1
+ 2b4:	12 96       	adiw	r26, 0x02	; 2
+ 2b6:	8c 91       	ld	r24, X
+ 2b8:	12 97       	sbiw	r26, 0x02	; 2
+ 2ba:	82 23       	and	r24, r18
+ 2bc:	89 2b       	or	r24, r25
+ 2be:	80 83       	st	Z, r24
+ 2c0:	13 96       	adiw	r26, 0x03	; 3
+{
+	uint8_t LoopIndex;
+	uint8_t ErrorFlag = 0;
+	GPIO_CheckType RetVar;
+	const GPIO_CfgType *CfgPtr;
+	for(LoopIndex = 0; ((LoopIndex < GPIO_GROUPS_NUMBER) && (ErrorFlag == 0)); LoopIndex ++)
+ 2c2:	a4 17       	cp	r26, r20
+ 2c4:	b5 07       	cpc	r27, r21
+ 2c6:	51 f7       	brne	.-44     	; 0x29c <GPIO_Init+0x8>
+		if(GPIO_ConfigParam[LoopIndex].PortId < PORTS_NUMBER)
+		{
+			CfgPtr = &GPIO_ConfigParam[LoopIndex];
+			DDR_R(CfgPtr->PortId) |= (CfgPtr->PortMask & CfgPtr->PortDirection);
+			GPIO_GroupState[LoopIndex] = 1;
+			RetVar = GPIO_OK;
+ 2c8:	80 e0       	ldi	r24, 0x00	; 0
+ 2ca:	08 95       	ret
+		}
+		else
+		{
+			RetVar = GPIO_NOK;
+ 2cc:	81 e0       	ldi	r24, 0x01	; 1
+			ErrorFlag = 1;
+		}
+	}
+	return RetVar;
+}
+ 2ce:	08 95       	ret
+
+000002d0 <GPIO_Write>:
+GPIO_CheckType GPIO_Write(uint8_t GroupId,uint8_t GroupData)
+{
+    GPIO_CheckType RetVar;
+    const GPIO_CfgType *CfgPtr;
+	CfgPtr = &GPIO_ConfigParam[GroupId];
+    if((GroupId < GPIO_GROUPS_NUMBER) && (CfgPtr->PortDirection == 0xFF))
+ 2d0:	80 32       	cpi	r24, 0x20	; 32
+ 2d2:	18 f5       	brcc	.+70     	; 0x31a <GPIO_Write+0x4a>
+/*A function to Digital Write data to a specific group*/
+GPIO_CheckType GPIO_Write(uint8_t GroupId,uint8_t GroupData)
+{
+    GPIO_CheckType RetVar;
+    const GPIO_CfgType *CfgPtr;
+	CfgPtr = &GPIO_ConfigParam[GroupId];
+ 2d4:	90 e0       	ldi	r25, 0x00	; 0
+    if((GroupId < GPIO_GROUPS_NUMBER) && (CfgPtr->PortDirection == 0xFF))
+ 2d6:	fc 01       	movw	r30, r24
+ 2d8:	ee 0f       	add	r30, r30
+ 2da:	ff 1f       	adc	r31, r31
+ 2dc:	e8 0f       	add	r30, r24
+ 2de:	f9 1f       	adc	r31, r25
+ 2e0:	ec 58       	subi	r30, 0x8C	; 140
+ 2e2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2e4:	22 81       	ldd	r18, Z+2	; 0x02
+ 2e6:	2f 3f       	cpi	r18, 0xFF	; 255
+ 2e8:	d1 f4       	brne	.+52     	; 0x31e <GPIO_Write+0x4e>
+    { 
+		PORT_R(GroupData,CfgPtr->PortMask,CfgPtr->PortId);
+ 2ea:	fc 01       	movw	r30, r24
+ 2ec:	ee 0f       	add	r30, r30
+ 2ee:	ff 1f       	adc	r31, r31
+ 2f0:	8e 0f       	add	r24, r30
+ 2f2:	9f 1f       	adc	r25, r31
+ 2f4:	fc 01       	movw	r30, r24
+ 2f6:	ec 58       	subi	r30, 0x8C	; 140
+ 2f8:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2fa:	a0 81       	ld	r26, Z
+ 2fc:	b0 e0       	ldi	r27, 0x00	; 0
+ 2fe:	a0 59       	subi	r26, 0x90	; 144
+ 300:	bf 4f       	sbci	r27, 0xFF	; 255
+ 302:	ac 91       	ld	r26, X
+ 304:	b0 e0       	ldi	r27, 0x00	; 0
+ 306:	8c 91       	ld	r24, X
+ 308:	91 81       	ldd	r25, Z+1	; 0x01
+ 30a:	29 2f       	mov	r18, r25
+ 30c:	20 95       	com	r18
+ 30e:	82 23       	and	r24, r18
+ 310:	69 23       	and	r22, r25
+ 312:	68 2b       	or	r22, r24
+ 314:	6c 93       	st	X, r22
+        RetVar=GPIO_OK;
+ 316:	80 e0       	ldi	r24, 0x00	; 0
+ 318:	08 95       	ret
+    }
+    else
+    {
+        RetVar=GPIO_NOK;
+ 31a:	81 e0       	ldi	r24, 0x01	; 1
+ 31c:	08 95       	ret
+ 31e:	81 e0       	ldi	r24, 0x01	; 1
+    }
+    return RetVar;
+}
+ 320:	08 95       	ret
+
+00000322 <GPIO_Read>:
+GPIO_CheckType GPIO_Read(uint8_t GroupId,uint8_t* GroupDataPtr)
+{
+    GPIO_CheckType RetVar;
+    const GPIO_CfgType *CfgPtr;
+	CfgPtr = &GPIO_ConfigParam[GroupId];
+	if((GroupId < GPIO_GROUPS_NUMBER) && (CfgPtr->PortDirection == 0x00))
+ 322:	80 32       	cpi	r24, 0x20	; 32
+ 324:	00 f5       	brcc	.+64     	; 0x366 <GPIO_Read+0x44>
+/*A function to Digital read data from a specific group*/
+GPIO_CheckType GPIO_Read(uint8_t GroupId,uint8_t* GroupDataPtr)
+{
+    GPIO_CheckType RetVar;
+    const GPIO_CfgType *CfgPtr;
+	CfgPtr = &GPIO_ConfigParam[GroupId];
+ 326:	90 e0       	ldi	r25, 0x00	; 0
+	if((GroupId < GPIO_GROUPS_NUMBER) && (CfgPtr->PortDirection == 0x00))
+ 328:	fc 01       	movw	r30, r24
+ 32a:	ee 0f       	add	r30, r30
+ 32c:	ff 1f       	adc	r31, r31
+ 32e:	e8 0f       	add	r30, r24
+ 330:	f9 1f       	adc	r31, r25
+ 332:	ec 58       	subi	r30, 0x8C	; 140
+ 334:	ff 4f       	sbci	r31, 0xFF	; 255
+ 336:	22 81       	ldd	r18, Z+2	; 0x02
+ 338:	21 11       	cpse	r18, r1
+ 33a:	17 c0       	rjmp	.+46     	; 0x36a <GPIO_Read+0x48>
+	{
+		*GroupDataPtr = PIN_R(CfgPtr->PortMask,CfgPtr->PortId);
+ 33c:	fc 01       	movw	r30, r24
+ 33e:	ee 0f       	add	r30, r30
+ 340:	ff 1f       	adc	r31, r31
+ 342:	8e 0f       	add	r24, r30
+ 344:	9f 1f       	adc	r25, r31
+ 346:	fc 01       	movw	r30, r24
+ 348:	ec 58       	subi	r30, 0x8C	; 140
+ 34a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 34c:	a0 81       	ld	r26, Z
+ 34e:	b0 e0       	ldi	r27, 0x00	; 0
+ 350:	a8 59       	subi	r26, 0x98	; 152
+ 352:	bf 4f       	sbci	r27, 0xFF	; 255
+ 354:	ac 91       	ld	r26, X
+ 356:	b0 e0       	ldi	r27, 0x00	; 0
+ 358:	8c 91       	ld	r24, X
+ 35a:	91 81       	ldd	r25, Z+1	; 0x01
+ 35c:	89 23       	and	r24, r25
+ 35e:	fb 01       	movw	r30, r22
+ 360:	80 83       	st	Z, r24
+		RetVar=GPIO_OK;
+ 362:	80 e0       	ldi	r24, 0x00	; 0
+ 364:	08 95       	ret
+	}
+    else
+    {
+        RetVar=GPIO_NOK;
+ 366:	81 e0       	ldi	r24, 0x01	; 1
+ 368:	08 95       	ret
+ 36a:	81 e0       	ldi	r24, 0x01	; 1
+    }
+    return RetVar;
+}
+ 36c:	08 95       	ret
+
+0000036e <main>:
+#define F_CPU 4000000
+#include <util/delay.h>
+
+
+int main(void)
+{
+ 36e:	cf 93       	push	r28
+ 370:	df 93       	push	r29
+ 372:	cd b7       	in	r28, 0x3d	; 61
+ 374:	de b7       	in	r29, 0x3e	; 62
+ 376:	2c 97       	sbiw	r28, 0x0c	; 12
+ 378:	0f b6       	in	r0, 0x3f	; 63
+ 37a:	f8 94       	cli
+ 37c:	de bf       	out	0x3e, r29	; 62
+ 37e:	0f be       	out	0x3f, r0	; 63
+ 380:	cd bf       	out	0x3d, r28	; 61
+	int Seg[4] = {0, 0, 0, 0};
+ 382:	fe 01       	movw	r30, r28
+ 384:	31 96       	adiw	r30, 0x01	; 1
+ 386:	88 e0       	ldi	r24, 0x08	; 8
+ 388:	df 01       	movw	r26, r30
+ 38a:	1d 92       	st	X+, r1
+ 38c:	8a 95       	dec	r24
+ 38e:	e9 f7       	brne	.-6      	; 0x38a <main+0x1c>
+	uint8_t Increment;
+	uint8_t Decrement;
+	uint8_t Field;
+	uint8_t Selector = 0;
+	uint8_t Count = 0;
+	GPIO_Init();
+ 390:	0e 94 4a 01 	call	0x294	; 0x294 <GPIO_Init>
+	Seg_Init();
+ 394:	0e 94 48 03 	call	0x690	; 0x690 <Seg_Init>
+	BTN_Init();
+ 398:	0e 94 49 00 	call	0x92	; 0x92 <BTN_Init>
+	uint8_t OnOff;
+	uint8_t Increment;
+	uint8_t Decrement;
+	uint8_t Field;
+	uint8_t Selector = 0;
+	uint8_t Count = 0;
+ 39c:	71 2c       	mov	r7, r1
+	int Seg[4] = {0, 0, 0, 0};
+	uint8_t OnOff;
+	uint8_t Increment;
+	uint8_t Decrement;
+	uint8_t Field;
+	uint8_t Selector = 0;
+ 39e:	61 2c       	mov	r6, r1
+			else if(Decrement == BTN_JPRSD)
+			{
+				Seg[Selector]--;
+				if((Selector == 0) && (Seg[0] < 0))
+				{
+					Seg[0] = 9;
+ 3a0:	0f 2e       	mov	r0, r31
+ 3a2:	f9 e0       	ldi	r31, 0x09	; 9
+ 3a4:	8f 2e       	mov	r8, r31
+ 3a6:	91 2c       	mov	r9, r1
+ 3a8:	f0 2d       	mov	r31, r0
+				{
+					Seg[1] = 5;
+				}
+				else if((Selector == 2) && ((Seg[2] == -1) && (Seg[3] > 1)))
+				{
+					Seg[2] = 3;
+ 3aa:	0f 2e       	mov	r0, r31
+ 3ac:	f3 e0       	ldi	r31, 0x03	; 3
+ 3ae:	2f 2e       	mov	r2, r31
+ 3b0:	31 2c       	mov	r3, r1
+ 3b2:	f0 2d       	mov	r31, r0
+				{
+					Seg[0] = 9;
+				}
+				else if((Selector == 1) && (Seg[1] == -1))
+				{
+					Seg[1] = 5;
+ 3b4:	0f 2e       	mov	r0, r31
+ 3b6:	f5 e0       	ldi	r31, 0x05	; 5
+ 3b8:	4f 2e       	mov	r4, r31
+ 3ba:	51 2c       	mov	r5, r1
+ 3bc:	f0 2d       	mov	r31, r0
+ 3be:	03 c0       	rjmp	.+6      	; 0x3c6 <main+0x58>
+ 3c0:	61 2c       	mov	r6, r1
+ 3c2:	01 c0       	rjmp	.+2      	; 0x3c6 <main+0x58>
+ 3c4:	61 2c       	mov	r6, r1
+	GPIO_Init();
+	Seg_Init();
+	BTN_Init();
+	while(1)
+	{
+		Seg_Disp(0, Seg[0], DP_OFF);
+ 3c6:	09 81       	ldd	r16, Y+1	; 0x01
+ 3c8:	1a 81       	ldd	r17, Y+2	; 0x02
+ 3ca:	40 e0       	ldi	r20, 0x00	; 0
+ 3cc:	60 2f       	mov	r22, r16
+ 3ce:	80 e0       	ldi	r24, 0x00	; 0
+ 3d0:	0e 94 d5 03 	call	0x7aa	; 0x7aa <Seg_Disp>
+		Seg_Disp(1, Seg[1], DP_OFF);
+ 3d4:	eb 80       	ldd	r14, Y+3	; 0x03
+ 3d6:	fc 80       	ldd	r15, Y+4	; 0x04
+ 3d8:	40 e0       	ldi	r20, 0x00	; 0
+ 3da:	6e 2d       	mov	r22, r14
+ 3dc:	81 e0       	ldi	r24, 0x01	; 1
+ 3de:	0e 94 d5 03 	call	0x7aa	; 0x7aa <Seg_Disp>
+		Seg_Disp(2, Seg[2], DP_OFF);
+ 3e2:	ad 80       	ldd	r10, Y+5	; 0x05
+ 3e4:	be 80       	ldd	r11, Y+6	; 0x06
+ 3e6:	40 e0       	ldi	r20, 0x00	; 0
+ 3e8:	6a 2d       	mov	r22, r10
+ 3ea:	82 e0       	ldi	r24, 0x02	; 2
+ 3ec:	0e 94 d5 03 	call	0x7aa	; 0x7aa <Seg_Disp>
+		Seg_Disp(3, Seg[3], DP_OFF);
+ 3f0:	cf 80       	ldd	r12, Y+7	; 0x07
+ 3f2:	d8 84       	ldd	r13, Y+8	; 0x08
+ 3f4:	40 e0       	ldi	r20, 0x00	; 0
+ 3f6:	6c 2d       	mov	r22, r12
+ 3f8:	83 e0       	ldi	r24, 0x03	; 3
+ 3fa:	0e 94 d5 03 	call	0x7aa	; 0x7aa <Seg_Disp>
+		BTN_GetBtnState(0, &OnOff);
+ 3fe:	be 01       	movw	r22, r28
+ 400:	67 5f       	subi	r22, 0xF7	; 247
+ 402:	7f 4f       	sbci	r23, 0xFF	; 255
+ 404:	80 e0       	ldi	r24, 0x00	; 0
+ 406:	0e 94 73 00 	call	0xe6	; 0xe6 <BTN_GetBtnState>
+		if(OnOff == BTN_ON)
+ 40a:	89 85       	ldd	r24, Y+9	; 0x09
+ 40c:	83 30       	cpi	r24, 0x03	; 3
+ 40e:	09 f0       	breq	.+2      	; 0x412 <__LOCK_REGION_LENGTH__+0x12>
+ 410:	ca c0       	rjmp	.+404    	; 0x5a6 <__stack+0x147>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 412:	bf e7       	ldi	r27, 0x7F	; 127
+ 414:	28 e3       	ldi	r18, 0x38	; 56
+ 416:	81 e0       	ldi	r24, 0x01	; 1
+ 418:	b1 50       	subi	r27, 0x01	; 1
+ 41a:	20 40       	sbci	r18, 0x00	; 0
+ 41c:	80 40       	sbci	r24, 0x00	; 0
+ 41e:	e1 f7       	brne	.-8      	; 0x418 <__LOCK_REGION_LENGTH__+0x18>
+ 420:	00 c0       	rjmp	.+0      	; 0x422 <__LOCK_REGION_LENGTH__+0x22>
+ 422:	00 00       	nop
+		{
+			_delay_ms(100);
+			Seg_Off(Selector);
+ 424:	86 2d       	mov	r24, r6
+ 426:	0e 94 b1 04 	call	0x962	; 0x962 <Seg_Off>
+ 42a:	9f e7       	ldi	r25, 0x7F	; 127
+ 42c:	a8 e3       	ldi	r26, 0x38	; 56
+ 42e:	b1 e0       	ldi	r27, 0x01	; 1
+ 430:	91 50       	subi	r25, 0x01	; 1
+ 432:	a0 40       	sbci	r26, 0x00	; 0
+ 434:	b0 40       	sbci	r27, 0x00	; 0
+ 436:	e1 f7       	brne	.-8      	; 0x430 <__LOCK_REGION_LENGTH__+0x30>
+ 438:	00 c0       	rjmp	.+0      	; 0x43a <__LOCK_REGION_LENGTH__+0x3a>
+ 43a:	00 00       	nop
+			_delay_ms(100);
+			BTN_GetBtnState(1, &Increment);
+ 43c:	be 01       	movw	r22, r28
+ 43e:	66 5f       	subi	r22, 0xF6	; 246
+ 440:	7f 4f       	sbci	r23, 0xFF	; 255
+ 442:	81 e0       	ldi	r24, 0x01	; 1
+ 444:	0e 94 73 00 	call	0xe6	; 0xe6 <BTN_GetBtnState>
+			BTN_GetBtnState(2, &Field);
+ 448:	be 01       	movw	r22, r28
+ 44a:	64 5f       	subi	r22, 0xF4	; 244
+ 44c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 44e:	82 e0       	ldi	r24, 0x02	; 2
+ 450:	0e 94 73 00 	call	0xe6	; 0xe6 <BTN_GetBtnState>
+			BTN_GetBtnState(3, &Decrement);			
+ 454:	be 01       	movw	r22, r28
+ 456:	65 5f       	subi	r22, 0xF5	; 245
+ 458:	7f 4f       	sbci	r23, 0xFF	; 255
+ 45a:	83 e0       	ldi	r24, 0x03	; 3
+ 45c:	0e 94 73 00 	call	0xe6	; 0xe6 <BTN_GetBtnState>
+			if(Field == BTN_JPRSD)
+ 460:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 462:	81 30       	cpi	r24, 0x01	; 1
+ 464:	29 f4       	brne	.+10     	; 0x470 <__stack+0x11>
+			{
+				Selector++;
+ 466:	63 94       	inc	r6
+				if(Selector > 3)
+ 468:	23 e0       	ldi	r18, 0x03	; 3
+ 46a:	26 15       	cp	r18, r6
+ 46c:	08 f4       	brcc	.+2      	; 0x470 <__stack+0x11>
+ 46e:	f9 c0       	rjmp	.+498    	; 0x662 <__stack+0x203>
+				}
+			}
+			else
+			{
+			}
+			if(Increment == BTN_JPRSD)
+ 470:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 472:	81 30       	cpi	r24, 0x01	; 1
+ 474:	09 f0       	breq	.+2      	; 0x478 <__stack+0x19>
+ 476:	4c c0       	rjmp	.+152    	; 0x510 <__stack+0xb1>
+			{
+				Seg[Selector]++;
+ 478:	e6 2d       	mov	r30, r6
+ 47a:	f0 e0       	ldi	r31, 0x00	; 0
+ 47c:	ee 0f       	add	r30, r30
+ 47e:	ff 1f       	adc	r31, r31
+ 480:	81 e0       	ldi	r24, 0x01	; 1
+ 482:	90 e0       	ldi	r25, 0x00	; 0
+ 484:	8c 0f       	add	r24, r28
+ 486:	9d 1f       	adc	r25, r29
+ 488:	e8 0f       	add	r30, r24
+ 48a:	f9 1f       	adc	r31, r25
+ 48c:	80 81       	ld	r24, Z
+ 48e:	91 81       	ldd	r25, Z+1	; 0x01
+ 490:	01 96       	adiw	r24, 0x01	; 1
+ 492:	91 83       	std	Z+1, r25	; 0x01
+ 494:	80 83       	st	Z, r24
+				if((Selector == 0) && (Seg[0] == 10))
+ 496:	61 10       	cpse	r6, r1
+ 498:	09 c0       	rjmp	.+18     	; 0x4ac <__stack+0x4d>
+ 49a:	89 81       	ldd	r24, Y+1	; 0x01
+ 49c:	9a 81       	ldd	r25, Y+2	; 0x02
+ 49e:	0a 97       	sbiw	r24, 0x0a	; 10
+ 4a0:	09 f0       	breq	.+2      	; 0x4a4 <__stack+0x45>
+ 4a2:	8e cf       	rjmp	.-228    	; 0x3c0 <main+0x52>
+				{
+					Seg[0] = 0;
+ 4a4:	1a 82       	std	Y+2, r1	; 0x02
+ 4a6:	19 82       	std	Y+1, r1	; 0x01
+ 4a8:	61 2c       	mov	r6, r1
+ 4aa:	8d cf       	rjmp	.-230    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 1) && (Seg[1] == 6))
+ 4ac:	91 e0       	ldi	r25, 0x01	; 1
+ 4ae:	69 12       	cpse	r6, r25
+ 4b0:	08 c0       	rjmp	.+16     	; 0x4c2 <__stack+0x63>
+ 4b2:	8b 81       	ldd	r24, Y+3	; 0x03
+ 4b4:	9c 81       	ldd	r25, Y+4	; 0x04
+ 4b6:	06 97       	sbiw	r24, 0x06	; 6
+ 4b8:	09 f0       	breq	.+2      	; 0x4bc <__stack+0x5d>
+ 4ba:	85 cf       	rjmp	.-246    	; 0x3c6 <main+0x58>
+				{
+					Seg[1] = 0;
+ 4bc:	1c 82       	std	Y+4, r1	; 0x04
+ 4be:	1b 82       	std	Y+3, r1	; 0x03
+ 4c0:	82 cf       	rjmp	.-252    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 2) && ((Seg[2] == 10) || ((Seg[2] > 3) && (Seg[3] >= 2))))
+ 4c2:	a2 e0       	ldi	r26, 0x02	; 2
+ 4c4:	6a 12       	cpse	r6, r26
+ 4c6:	10 c0       	rjmp	.+32     	; 0x4e8 <__stack+0x89>
+ 4c8:	8d 81       	ldd	r24, Y+5	; 0x05
+ 4ca:	9e 81       	ldd	r25, Y+6	; 0x06
+ 4cc:	8a 30       	cpi	r24, 0x0A	; 10
+ 4ce:	91 05       	cpc	r25, r1
+ 4d0:	41 f0       	breq	.+16     	; 0x4e2 <__stack+0x83>
+ 4d2:	04 97       	sbiw	r24, 0x04	; 4
+ 4d4:	0c f4       	brge	.+2      	; 0x4d8 <__stack+0x79>
+ 4d6:	77 cf       	rjmp	.-274    	; 0x3c6 <main+0x58>
+ 4d8:	8f 81       	ldd	r24, Y+7	; 0x07
+ 4da:	98 85       	ldd	r25, Y+8	; 0x08
+ 4dc:	02 97       	sbiw	r24, 0x02	; 2
+ 4de:	0c f4       	brge	.+2      	; 0x4e2 <__stack+0x83>
+ 4e0:	72 cf       	rjmp	.-284    	; 0x3c6 <main+0x58>
+				{
+					Seg[2] = 0;
+ 4e2:	1e 82       	std	Y+6, r1	; 0x06
+ 4e4:	1d 82       	std	Y+5, r1	; 0x05
+ 4e6:	6f cf       	rjmp	.-290    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 3) && ((Seg[3] == 3) || ((Seg[2] > 3) && (Seg[3] > 1))))
+ 4e8:	b3 e0       	ldi	r27, 0x03	; 3
+ 4ea:	6b 12       	cpse	r6, r27
+ 4ec:	6c cf       	rjmp	.-296    	; 0x3c6 <main+0x58>
+ 4ee:	8f 81       	ldd	r24, Y+7	; 0x07
+ 4f0:	98 85       	ldd	r25, Y+8	; 0x08
+ 4f2:	83 30       	cpi	r24, 0x03	; 3
+ 4f4:	91 05       	cpc	r25, r1
+ 4f6:	49 f0       	breq	.+18     	; 0x50a <__stack+0xab>
+ 4f8:	2d 81       	ldd	r18, Y+5	; 0x05
+ 4fa:	3e 81       	ldd	r19, Y+6	; 0x06
+ 4fc:	24 30       	cpi	r18, 0x04	; 4
+ 4fe:	31 05       	cpc	r19, r1
+ 500:	0c f4       	brge	.+2      	; 0x504 <__stack+0xa5>
+ 502:	61 cf       	rjmp	.-318    	; 0x3c6 <main+0x58>
+ 504:	02 97       	sbiw	r24, 0x02	; 2
+ 506:	0c f4       	brge	.+2      	; 0x50a <__stack+0xab>
+ 508:	5e cf       	rjmp	.-324    	; 0x3c6 <main+0x58>
+				{
+					Seg[3] = 0;
+ 50a:	18 86       	std	Y+8, r1	; 0x08
+ 50c:	1f 82       	std	Y+7, r1	; 0x07
+ 50e:	5b cf       	rjmp	.-330    	; 0x3c6 <main+0x58>
+				}
+				else
+				{	
+				}
+			}
+			else if(Decrement == BTN_JPRSD)
+ 510:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 512:	81 30       	cpi	r24, 0x01	; 1
+ 514:	09 f0       	breq	.+2      	; 0x518 <__stack+0xb9>
+ 516:	57 cf       	rjmp	.-338    	; 0x3c6 <main+0x58>
+			{
+				Seg[Selector]--;
+ 518:	e6 2d       	mov	r30, r6
+ 51a:	f0 e0       	ldi	r31, 0x00	; 0
+ 51c:	ee 0f       	add	r30, r30
+ 51e:	ff 1f       	adc	r31, r31
+ 520:	81 e0       	ldi	r24, 0x01	; 1
+ 522:	90 e0       	ldi	r25, 0x00	; 0
+ 524:	8c 0f       	add	r24, r28
+ 526:	9d 1f       	adc	r25, r29
+ 528:	e8 0f       	add	r30, r24
+ 52a:	f9 1f       	adc	r31, r25
+ 52c:	80 81       	ld	r24, Z
+ 52e:	91 81       	ldd	r25, Z+1	; 0x01
+ 530:	01 97       	sbiw	r24, 0x01	; 1
+ 532:	91 83       	std	Z+1, r25	; 0x01
+ 534:	80 83       	st	Z, r24
+				if((Selector == 0) && (Seg[0] < 0))
+ 536:	61 10       	cpse	r6, r1
+ 538:	09 c0       	rjmp	.+18     	; 0x54c <__stack+0xed>
+ 53a:	89 81       	ldd	r24, Y+1	; 0x01
+ 53c:	9a 81       	ldd	r25, Y+2	; 0x02
+ 53e:	99 23       	and	r25, r25
+ 540:	0c f0       	brlt	.+2      	; 0x544 <__stack+0xe5>
+ 542:	40 cf       	rjmp	.-384    	; 0x3c4 <main+0x56>
+				{
+					Seg[0] = 9;
+ 544:	9a 82       	std	Y+2, r9	; 0x02
+ 546:	89 82       	std	Y+1, r8	; 0x01
+ 548:	61 2c       	mov	r6, r1
+ 54a:	3d cf       	rjmp	.-390    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 1) && (Seg[1] == -1))
+ 54c:	91 e0       	ldi	r25, 0x01	; 1
+ 54e:	69 12       	cpse	r6, r25
+ 550:	08 c0       	rjmp	.+16     	; 0x562 <__stack+0x103>
+ 552:	8b 81       	ldd	r24, Y+3	; 0x03
+ 554:	9c 81       	ldd	r25, Y+4	; 0x04
+ 556:	01 96       	adiw	r24, 0x01	; 1
+ 558:	09 f0       	breq	.+2      	; 0x55c <__stack+0xfd>
+ 55a:	35 cf       	rjmp	.-406    	; 0x3c6 <main+0x58>
+				{
+					Seg[1] = 5;
+ 55c:	5c 82       	std	Y+4, r5	; 0x04
+ 55e:	4b 82       	std	Y+3, r4	; 0x03
+ 560:	32 cf       	rjmp	.-412    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 2) && ((Seg[2] == -1) && (Seg[3] > 1)))
+ 562:	b2 e0       	ldi	r27, 0x02	; 2
+ 564:	6b 12       	cpse	r6, r27
+ 566:	0d c0       	rjmp	.+26     	; 0x582 <__stack+0x123>
+ 568:	8d 81       	ldd	r24, Y+5	; 0x05
+ 56a:	9e 81       	ldd	r25, Y+6	; 0x06
+ 56c:	01 96       	adiw	r24, 0x01	; 1
+ 56e:	09 f0       	breq	.+2      	; 0x572 <__stack+0x113>
+ 570:	2a cf       	rjmp	.-428    	; 0x3c6 <main+0x58>
+ 572:	8f 81       	ldd	r24, Y+7	; 0x07
+ 574:	98 85       	ldd	r25, Y+8	; 0x08
+ 576:	02 97       	sbiw	r24, 0x02	; 2
+ 578:	0c f4       	brge	.+2      	; 0x57c <__stack+0x11d>
+ 57a:	82 c0       	rjmp	.+260    	; 0x680 <__stack+0x221>
+				{
+					Seg[2] = 3;
+ 57c:	3e 82       	std	Y+6, r3	; 0x06
+ 57e:	2d 82       	std	Y+5, r2	; 0x05
+ 580:	22 cf       	rjmp	.-444    	; 0x3c6 <main+0x58>
+				}
+				else if((Selector == 2) && (Seg[2] == -1))
+				{
+					Seg[2] = 9;
+				}
+				else if((Selector == 3) && ((Seg[3] == -1) && (Seg[2] > 3)))
+ 582:	83 e0       	ldi	r24, 0x03	; 3
+ 584:	68 12       	cpse	r6, r24
+ 586:	1f cf       	rjmp	.-450    	; 0x3c6 <main+0x58>
+ 588:	8f 81       	ldd	r24, Y+7	; 0x07
+ 58a:	98 85       	ldd	r25, Y+8	; 0x08
+ 58c:	01 96       	adiw	r24, 0x01	; 1
+ 58e:	09 f0       	breq	.+2      	; 0x592 <__stack+0x133>
+ 590:	1a cf       	rjmp	.-460    	; 0x3c6 <main+0x58>
+ 592:	8d 81       	ldd	r24, Y+5	; 0x05
+ 594:	9e 81       	ldd	r25, Y+6	; 0x06
+ 596:	04 97       	sbiw	r24, 0x04	; 4
+ 598:	0c f4       	brge	.+2      	; 0x59c <__stack+0x13d>
+ 59a:	75 c0       	rjmp	.+234    	; 0x686 <__stack+0x227>
+				{
+					Seg[3] = 1;
+ 59c:	81 e0       	ldi	r24, 0x01	; 1
+ 59e:	90 e0       	ldi	r25, 0x00	; 0
+ 5a0:	98 87       	std	Y+8, r25	; 0x08
+ 5a2:	8f 83       	std	Y+7, r24	; 0x07
+ 5a4:	10 cf       	rjmp	.-480    	; 0x3c6 <main+0x58>
+			}					
+			else
+			{
+			}
+		}
+		else if((OnOff == BTN_OFF) && (Count == 60))
+ 5a6:	81 11       	cpse	r24, r1
+ 5a8:	4c c0       	rjmp	.+152    	; 0x642 <__stack+0x1e3>
+ 5aa:	9c e3       	ldi	r25, 0x3C	; 60
+ 5ac:	79 12       	cpse	r7, r25
+ 5ae:	49 c0       	rjmp	.+146    	; 0x642 <__stack+0x1e3>
+		{
+			Count = 0;
+			if((Seg[3] == 2) && (Seg[2] == 3) && (Seg[1] == 5) && (Seg[0] == 9))
+ 5b0:	a2 e0       	ldi	r26, 0x02	; 2
+ 5b2:	ca 16       	cp	r12, r26
+ 5b4:	d1 04       	cpc	r13, r1
+ 5b6:	a1 f4       	brne	.+40     	; 0x5e0 <__stack+0x181>
+ 5b8:	b3 e0       	ldi	r27, 0x03	; 3
+ 5ba:	ab 16       	cp	r10, r27
+ 5bc:	b1 04       	cpc	r11, r1
+ 5be:	81 f4       	brne	.+32     	; 0x5e0 <__stack+0x181>
+ 5c0:	25 e0       	ldi	r18, 0x05	; 5
+ 5c2:	e2 16       	cp	r14, r18
+ 5c4:	f1 04       	cpc	r15, r1
+ 5c6:	61 f4       	brne	.+24     	; 0x5e0 <__stack+0x181>
+ 5c8:	09 30       	cpi	r16, 0x09	; 9
+ 5ca:	11 05       	cpc	r17, r1
+ 5cc:	51 f5       	brne	.+84     	; 0x622 <__stack+0x1c3>
+			{
+				Seg[0] = 0;
+ 5ce:	1a 82       	std	Y+2, r1	; 0x02
+ 5d0:	19 82       	std	Y+1, r1	; 0x01
+				Seg[1] = 0;
+ 5d2:	1c 82       	std	Y+4, r1	; 0x04
+ 5d4:	1b 82       	std	Y+3, r1	; 0x03
+				Seg[2] = 0;
+ 5d6:	1e 82       	std	Y+6, r1	; 0x06
+ 5d8:	1d 82       	std	Y+5, r1	; 0x05
+				Seg[3] = 0;
+ 5da:	18 86       	std	Y+8, r1	; 0x08
+ 5dc:	1f 82       	std	Y+7, r1	; 0x07
+ 5de:	25 c0       	rjmp	.+74     	; 0x62a <__stack+0x1cb>
+			}
+			else if(Seg[0] == 9)
+ 5e0:	09 30       	cpi	r16, 0x09	; 9
+ 5e2:	11 05       	cpc	r17, r1
+ 5e4:	f1 f4       	brne	.+60     	; 0x622 <__stack+0x1c3>
+			{
+				Seg[1]++;
+ 5e6:	8f ef       	ldi	r24, 0xFF	; 255
+ 5e8:	e8 1a       	sub	r14, r24
+ 5ea:	f8 0a       	sbc	r15, r24
+ 5ec:	fc 82       	std	Y+4, r15	; 0x04
+ 5ee:	eb 82       	std	Y+3, r14	; 0x03
+				Seg[0] = 0;
+ 5f0:	1a 82       	std	Y+2, r1	; 0x02
+ 5f2:	19 82       	std	Y+1, r1	; 0x01
+				if(Seg[1] == 6)
+ 5f4:	96 e0       	ldi	r25, 0x06	; 6
+ 5f6:	e9 16       	cp	r14, r25
+ 5f8:	f1 04       	cpc	r15, r1
+ 5fa:	b9 f4       	brne	.+46     	; 0x62a <__stack+0x1cb>
+				{
+					Seg[2]++;
+ 5fc:	af ef       	ldi	r26, 0xFF	; 255
+ 5fe:	aa 1a       	sub	r10, r26
+ 600:	ba 0a       	sbc	r11, r26
+ 602:	be 82       	std	Y+6, r11	; 0x06
+ 604:	ad 82       	std	Y+5, r10	; 0x05
+					Seg[1] = 0;
+ 606:	1c 82       	std	Y+4, r1	; 0x04
+ 608:	1b 82       	std	Y+3, r1	; 0x03
+					if(Seg[2] == 10)
+ 60a:	ba e0       	ldi	r27, 0x0A	; 10
+ 60c:	ab 16       	cp	r10, r27
+ 60e:	b1 04       	cpc	r11, r1
+ 610:	61 f4       	brne	.+24     	; 0x62a <__stack+0x1cb>
+					{
+						Seg[3]++;
+ 612:	2f ef       	ldi	r18, 0xFF	; 255
+ 614:	c2 1a       	sub	r12, r18
+ 616:	d2 0a       	sbc	r13, r18
+ 618:	d8 86       	std	Y+8, r13	; 0x08
+ 61a:	cf 82       	std	Y+7, r12	; 0x07
+						Seg[2] = 0;
+ 61c:	1e 82       	std	Y+6, r1	; 0x06
+ 61e:	1d 82       	std	Y+5, r1	; 0x05
+ 620:	04 c0       	rjmp	.+8      	; 0x62a <__stack+0x1cb>
+				{
+				}
+			}
+			else
+			{
+				Seg[0]++;
+ 622:	0f 5f       	subi	r16, 0xFF	; 255
+ 624:	1f 4f       	sbci	r17, 0xFF	; 255
+ 626:	1a 83       	std	Y+2, r17	; 0x02
+ 628:	09 83       	std	Y+1, r16	; 0x01
+ 62a:	8f ef       	ldi	r24, 0xFF	; 255
+ 62c:	94 e3       	ldi	r25, 0x34	; 52
+ 62e:	ac e0       	ldi	r26, 0x0C	; 12
+ 630:	81 50       	subi	r24, 0x01	; 1
+ 632:	90 40       	sbci	r25, 0x00	; 0
+ 634:	a0 40       	sbci	r26, 0x00	; 0
+ 636:	e1 f7       	brne	.-8      	; 0x630 <__stack+0x1d1>
+ 638:	00 c0       	rjmp	.+0      	; 0x63a <__stack+0x1db>
+ 63a:	00 00       	nop
+			}
+			_delay_ms(1000);
+			Count++;
+ 63c:	77 24       	eor	r7, r7
+ 63e:	73 94       	inc	r7
+ 640:	c2 ce       	rjmp	.-636    	; 0x3c6 <main+0x58>
+ 642:	bf ef       	ldi	r27, 0xFF	; 255
+ 644:	24 e3       	ldi	r18, 0x34	; 52
+ 646:	8c e0       	ldi	r24, 0x0C	; 12
+ 648:	b1 50       	subi	r27, 0x01	; 1
+ 64a:	20 40       	sbci	r18, 0x00	; 0
+ 64c:	80 40       	sbci	r24, 0x00	; 0
+ 64e:	e1 f7       	brne	.-8      	; 0x648 <__stack+0x1e9>
+ 650:	00 c0       	rjmp	.+0      	; 0x652 <__stack+0x1f3>
+ 652:	00 00       	nop
+		}
+		else
+		{
+			_delay_ms(1000);
+			Count++;
+ 654:	73 94       	inc	r7
+ 656:	b7 ce       	rjmp	.-658    	; 0x3c6 <main+0x58>
+			else
+			{
+			}
+			if(Increment == BTN_JPRSD)
+			{
+				Seg[Selector]++;
+ 658:	0f 5f       	subi	r16, 0xFF	; 255
+ 65a:	1f 4f       	sbci	r17, 0xFF	; 255
+ 65c:	1a 83       	std	Y+2, r17	; 0x02
+ 65e:	09 83       	std	Y+1, r16	; 0x01
+ 660:	1c cf       	rjmp	.-456    	; 0x49a <__stack+0x3b>
+				}
+			}
+			else
+			{
+			}
+			if(Increment == BTN_JPRSD)
+ 662:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 664:	81 30       	cpi	r24, 0x01	; 1
+ 666:	39 f4       	brne	.+14     	; 0x676 <__stack+0x217>
+ 668:	f7 cf       	rjmp	.-18     	; 0x658 <__stack+0x1f9>
+				{	
+				}
+			}
+			else if(Decrement == BTN_JPRSD)
+			{
+				Seg[Selector]--;
+ 66a:	89 81       	ldd	r24, Y+1	; 0x01
+ 66c:	9a 81       	ldd	r25, Y+2	; 0x02
+ 66e:	01 97       	sbiw	r24, 0x01	; 1
+ 670:	9a 83       	std	Y+2, r25	; 0x02
+ 672:	89 83       	std	Y+1, r24	; 0x01
+ 674:	62 cf       	rjmp	.-316    	; 0x53a <__stack+0xdb>
+				}
+				else
+				{	
+				}
+			}
+			else if(Decrement == BTN_JPRSD)
+ 676:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 678:	81 30       	cpi	r24, 0x01	; 1
+ 67a:	b9 f3       	breq	.-18     	; 0x66a <__stack+0x20b>
+			if(Field == BTN_JPRSD)
+			{
+				Selector++;
+				if(Selector > 3)
+				{
+					Selector = 0;
+ 67c:	61 2c       	mov	r6, r1
+ 67e:	a3 ce       	rjmp	.-698    	; 0x3c6 <main+0x58>
+				{
+					Seg[2] = 3;
+				}
+				else if((Selector == 2) && (Seg[2] == -1))
+				{
+					Seg[2] = 9;
+ 680:	9e 82       	std	Y+6, r9	; 0x06
+ 682:	8d 82       	std	Y+5, r8	; 0x05
+ 684:	a0 ce       	rjmp	.-704    	; 0x3c6 <main+0x58>
+				{
+					Seg[3] = 1;
+				}
+				else if((Selector == 3) && (Seg[3] == -1))
+				{
+					Seg[3] = 2;
+ 686:	a2 e0       	ldi	r26, 0x02	; 2
+ 688:	b0 e0       	ldi	r27, 0x00	; 0
+ 68a:	b8 87       	std	Y+8, r27	; 0x08
+ 68c:	af 83       	std	Y+7, r26	; 0x07
+ 68e:	9b ce       	rjmp	.-714    	; 0x3c6 <main+0x58>
+
+00000690 <Seg_Init>:
+	{HIGH, HIGH, HIGH, HIGH, LOW, HIGH, HIGH}		 
+};
+
+
+void Seg_Init(void)
+{
+ 690:	6f 92       	push	r6
+ 692:	7f 92       	push	r7
+ 694:	8f 92       	push	r8
+ 696:	9f 92       	push	r9
+ 698:	af 92       	push	r10
+ 69a:	bf 92       	push	r11
+ 69c:	cf 92       	push	r12
+ 69e:	df 92       	push	r13
+ 6a0:	ef 92       	push	r14
+ 6a2:	ff 92       	push	r15
+ 6a4:	0f 93       	push	r16
+ 6a6:	1f 93       	push	r17
+ 6a8:	cf 93       	push	r28
+ 6aa:	df 93       	push	r29
+ 6ac:	ca e1       	ldi	r28, 0x1A	; 26
+ 6ae:	d1 e0       	ldi	r29, 0x01	; 1
+ 6b0:	0f 2e       	mov	r0, r31
+ 6b2:	fc e1       	ldi	r31, 0x1C	; 28
+ 6b4:	ef 2e       	mov	r14, r31
+ 6b6:	f1 e0       	ldi	r31, 0x01	; 1
+ 6b8:	ff 2e       	mov	r15, r31
+ 6ba:	f0 2d       	mov	r31, r0
+ 6bc:	0f 2e       	mov	r0, r31
+ 6be:	fe e3       	ldi	r31, 0x3E	; 62
+ 6c0:	6f 2e       	mov	r6, r31
+ 6c2:	f1 e0       	ldi	r31, 0x01	; 1
+ 6c4:	7f 2e       	mov	r7, r31
+ 6c6:	f0 2d       	mov	r31, r0
+			}
+			else
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 4; LoopIndex1++)
+				{
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], (0x0F & (1<<LoopIndex1)));
+ 6c8:	cc 24       	eor	r12, r12
+ 6ca:	c3 94       	inc	r12
+ 6cc:	d1 2c       	mov	r13, r1
+ 6ce:	0f 2e       	mov	r0, r31
+ 6d0:	fb ed       	ldi	r31, 0xDB	; 219
+ 6d2:	af 2e       	mov	r10, r31
+ 6d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 6d6:	bf 2e       	mov	r11, r31
+ 6d8:	f0 2d       	mov	r31, r0
+{
+	uint8_t LoopIndex0 = 0;
+	uint8_t LoopIndex1;
+	for(LoopIndex0 = 0; LoopIndex0 < NO_OF_MODULES; LoopIndex0++)
+	{
+		if(Seg_ConfigData[LoopIndex0].ConnMode == COMMON_CATHODE)
+ 6da:	88 81       	ld	r24, Y
+ 6dc:	81 30       	cpi	r24, 0x01	; 1
+ 6de:	01 f5       	brne	.+64     	; 0x720 <Seg_Init+0x90>
+		{
+			if(Seg_ConfigData[LoopIndex0].ConnType == SEVEN_PINS)
+ 6e0:	89 81       	ldd	r24, Y+1	; 0x01
+ 6e2:	81 30       	cpi	r24, 0x01	; 1
+ 6e4:	79 f4       	brne	.+30     	; 0x704 <Seg_Init+0x74>
+ 6e6:	04 ed       	ldi	r16, 0xD4	; 212
+ 6e8:	10 e0       	ldi	r17, 0x00	; 0
+ 6ea:	47 01       	movw	r8, r14
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 7; LoopIndex1++)
+				{
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], DigitsLUT[0][LoopIndex1]);
+ 6ec:	f8 01       	movw	r30, r16
+ 6ee:	61 91       	ld	r22, Z+
+ 6f0:	8f 01       	movw	r16, r30
+ 6f2:	f4 01       	movw	r30, r8
+ 6f4:	81 91       	ld	r24, Z+
+ 6f6:	4f 01       	movw	r8, r30
+ 6f8:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+	{
+		if(Seg_ConfigData[LoopIndex0].ConnMode == COMMON_CATHODE)
+		{
+			if(Seg_ConfigData[LoopIndex0].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 7; LoopIndex1++)
+ 6fc:	a0 16       	cp	r10, r16
+ 6fe:	b1 06       	cpc	r11, r17
+ 700:	a9 f7       	brne	.-22     	; 0x6ec <Seg_Init+0x5c>
+ 702:	3c c0       	rjmp	.+120    	; 0x77c <Seg_Init+0xec>
+ 704:	87 01       	movw	r16, r14
+ 706:	68 94       	set
+ 708:	99 24       	eor	r9, r9
+ 70a:	92 f8       	bld	r9, 2
+			}
+			else
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 4; LoopIndex1++)
+				{
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], (0x00 & (1<<LoopIndex1)));
+ 70c:	60 e0       	ldi	r22, 0x00	; 0
+ 70e:	f8 01       	movw	r30, r16
+ 710:	81 91       	ld	r24, Z+
+ 712:	8f 01       	movw	r16, r30
+ 714:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 718:	9a 94       	dec	r9
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], DigitsLUT[0][LoopIndex1]);
+				}
+			}
+			else
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 4; LoopIndex1++)
+ 71a:	91 10       	cpse	r9, r1
+ 71c:	f7 cf       	rjmp	.-18     	; 0x70c <Seg_Init+0x7c>
+ 71e:	2e c0       	rjmp	.+92     	; 0x77c <Seg_Init+0xec>
+				}
+			}
+		}
+		else
+		{
+			if(Seg_ConfigData[LoopIndex0].ConnType == SEVEN_PINS)
+ 720:	89 81       	ldd	r24, Y+1	; 0x01
+ 722:	81 30       	cpi	r24, 0x01	; 1
+ 724:	a1 f4       	brne	.+40     	; 0x74e <Seg_Init+0xbe>
+ 726:	0f 2e       	mov	r0, r31
+ 728:	f4 ed       	ldi	r31, 0xD4	; 212
+ 72a:	8f 2e       	mov	r8, r31
+ 72c:	f0 e0       	ldi	r31, 0x00	; 0
+ 72e:	9f 2e       	mov	r9, r31
+ 730:	f0 2d       	mov	r31, r0
+ 732:	87 01       	movw	r16, r14
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 7; LoopIndex1++)
+				{
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], ~(DigitsLUT[0][LoopIndex1]));
+ 734:	f4 01       	movw	r30, r8
+ 736:	61 91       	ld	r22, Z+
+ 738:	4f 01       	movw	r8, r30
+ 73a:	60 95       	com	r22
+ 73c:	f8 01       	movw	r30, r16
+ 73e:	81 91       	ld	r24, Z+
+ 740:	8f 01       	movw	r16, r30
+ 742:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+		}
+		else
+		{
+			if(Seg_ConfigData[LoopIndex0].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 7; LoopIndex1++)
+ 746:	8a 14       	cp	r8, r10
+ 748:	9b 04       	cpc	r9, r11
+ 74a:	a1 f7       	brne	.-24     	; 0x734 <Seg_Init+0xa4>
+ 74c:	17 c0       	rjmp	.+46     	; 0x77c <Seg_Init+0xec>
+ 74e:	87 01       	movw	r16, r14
+ 750:	81 2c       	mov	r8, r1
+ 752:	91 2c       	mov	r9, r1
+			}
+			else
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 4; LoopIndex1++)
+				{
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], (0x0F & (1<<LoopIndex1)));
+ 754:	b6 01       	movw	r22, r12
+ 756:	08 2c       	mov	r0, r8
+ 758:	02 c0       	rjmp	.+4      	; 0x75e <Seg_Init+0xce>
+ 75a:	66 0f       	add	r22, r22
+ 75c:	77 1f       	adc	r23, r23
+ 75e:	0a 94       	dec	r0
+ 760:	e2 f7       	brpl	.-8      	; 0x75a <Seg_Init+0xca>
+ 762:	6f 70       	andi	r22, 0x0F	; 15
+ 764:	f8 01       	movw	r30, r16
+ 766:	81 91       	ld	r24, Z+
+ 768:	8f 01       	movw	r16, r30
+ 76a:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 76e:	ff ef       	ldi	r31, 0xFF	; 255
+ 770:	8f 1a       	sub	r8, r31
+ 772:	9f 0a       	sbc	r9, r31
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], ~(DigitsLUT[0][LoopIndex1]));
+				}
+			}
+			else
+			{
+				for(LoopIndex1 = 0; LoopIndex1 < 4; LoopIndex1++)
+ 774:	84 e0       	ldi	r24, 0x04	; 4
+ 776:	88 16       	cp	r8, r24
+ 778:	91 04       	cpc	r9, r1
+ 77a:	61 f7       	brne	.-40     	; 0x754 <Seg_Init+0xc4>
+ 77c:	29 96       	adiw	r28, 0x09	; 9
+ 77e:	e9 e0       	ldi	r30, 0x09	; 9
+ 780:	ee 0e       	add	r14, r30
+ 782:	f1 1c       	adc	r15, r1
+
+void Seg_Init(void)
+{
+	uint8_t LoopIndex0 = 0;
+	uint8_t LoopIndex1;
+	for(LoopIndex0 = 0; LoopIndex0 < NO_OF_MODULES; LoopIndex0++)
+ 784:	c6 15       	cp	r28, r6
+ 786:	d7 05       	cpc	r29, r7
+ 788:	09 f0       	breq	.+2      	; 0x78c <Seg_Init+0xfc>
+ 78a:	a7 cf       	rjmp	.-178    	; 0x6da <Seg_Init+0x4a>
+					GPIO_Write(Seg_ConfigData[LoopIndex0].SegPins[LoopIndex1], (0x0F & (1<<LoopIndex1)));
+				}
+			}
+		}
+	}
+}
+ 78c:	df 91       	pop	r29
+ 78e:	cf 91       	pop	r28
+ 790:	1f 91       	pop	r17
+ 792:	0f 91       	pop	r16
+ 794:	ff 90       	pop	r15
+ 796:	ef 90       	pop	r14
+ 798:	df 90       	pop	r13
+ 79a:	cf 90       	pop	r12
+ 79c:	bf 90       	pop	r11
+ 79e:	af 90       	pop	r10
+ 7a0:	9f 90       	pop	r9
+ 7a2:	8f 90       	pop	r8
+ 7a4:	7f 90       	pop	r7
+ 7a6:	6f 90       	pop	r6
+ 7a8:	08 95       	ret
+
+000007aa <Seg_Disp>:
+
+Seg_CheckType Seg_Disp(uint8_t Module, uint8_t Number, Seg_DPControl DP)
+{
+ 7aa:	cf 92       	push	r12
+ 7ac:	df 92       	push	r13
+ 7ae:	ef 92       	push	r14
+ 7b0:	ff 92       	push	r15
+ 7b2:	0f 93       	push	r16
+ 7b4:	1f 93       	push	r17
+ 7b6:	cf 93       	push	r28
+ 7b8:	df 93       	push	r29
+	Seg_CheckType RetVar;
+	uint8_t LoopIndex;
+	if((Module < NO_OF_MODULES) && (Number < 10))
+ 7ba:	84 30       	cpi	r24, 0x04	; 4
+ 7bc:	08 f0       	brcs	.+2      	; 0x7c0 <Seg_Disp+0x16>
+ 7be:	c5 c0       	rjmp	.+394    	; 0x94a <Seg_Disp+0x1a0>
+ 7c0:	6a 30       	cpi	r22, 0x0A	; 10
+ 7c2:	08 f0       	brcs	.+2      	; 0x7c6 <Seg_Disp+0x1c>
+ 7c4:	c4 c0       	rjmp	.+392    	; 0x94e <Seg_Disp+0x1a4>
+ 7c6:	16 2f       	mov	r17, r22
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+ 7c8:	28 2f       	mov	r18, r24
+ 7ca:	30 e0       	ldi	r19, 0x00	; 0
+ 7cc:	f9 01       	movw	r30, r18
+ 7ce:	ee 0f       	add	r30, r30
+ 7d0:	ff 1f       	adc	r31, r31
+ 7d2:	ee 0f       	add	r30, r30
+ 7d4:	ff 1f       	adc	r31, r31
+ 7d6:	ee 0f       	add	r30, r30
+ 7d8:	ff 1f       	adc	r31, r31
+ 7da:	e2 0f       	add	r30, r18
+ 7dc:	f3 1f       	adc	r31, r19
+ 7de:	e6 5e       	subi	r30, 0xE6	; 230
+ 7e0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 7e2:	90 81       	ld	r25, Z
+ 7e4:	91 30       	cpi	r25, 0x01	; 1
+ 7e6:	09 f0       	breq	.+2      	; 0x7ea <Seg_Disp+0x40>
+ 7e8:	57 c0       	rjmp	.+174    	; 0x898 <Seg_Disp+0xee>
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 7ea:	f9 01       	movw	r30, r18
+ 7ec:	ee 0f       	add	r30, r30
+ 7ee:	ff 1f       	adc	r31, r31
+ 7f0:	ee 0f       	add	r30, r30
+ 7f2:	ff 1f       	adc	r31, r31
+ 7f4:	ee 0f       	add	r30, r30
+ 7f6:	ff 1f       	adc	r31, r31
+ 7f8:	2e 0f       	add	r18, r30
+ 7fa:	3f 1f       	adc	r19, r31
+ 7fc:	f9 01       	movw	r30, r18
+ 7fe:	e6 5e       	subi	r30, 0xE6	; 230
+ 800:	fe 4f       	sbci	r31, 0xFE	; 254
+ 802:	91 81       	ldd	r25, Z+1	; 0x01
+ 804:	91 30       	cpi	r25, 0x01	; 1
+ 806:	11 f5       	brne	.+68     	; 0x84c <Seg_Disp+0xa2>
+ 808:	27 e0       	ldi	r18, 0x07	; 7
+ 80a:	62 9f       	mul	r22, r18
+ 80c:	b0 01       	movw	r22, r0
+ 80e:	11 24       	eor	r1, r1
+ 810:	fb 01       	movw	r30, r22
+ 812:	ec 52       	subi	r30, 0x2C	; 44
+ 814:	ff 4f       	sbci	r31, 0xFF	; 255
+ 816:	7f 01       	movw	r14, r30
+ 818:	90 e0       	ldi	r25, 0x00	; 0
+ 81a:	8c 01       	movw	r16, r24
+ 81c:	00 0f       	add	r16, r16
+ 81e:	11 1f       	adc	r17, r17
+ 820:	00 0f       	add	r16, r16
+ 822:	11 1f       	adc	r17, r17
+ 824:	00 0f       	add	r16, r16
+ 826:	11 1f       	adc	r17, r17
+ 828:	80 0f       	add	r24, r16
+ 82a:	91 1f       	adc	r25, r17
+ 82c:	8c 01       	movw	r16, r24
+ 82e:	04 5e       	subi	r16, 0xE4	; 228
+ 830:	1e 4f       	sbci	r17, 0xFE	; 254
+ 832:	c7 e0       	ldi	r28, 0x07	; 7
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], DigitsLUT[Number][LoopIndex]);
+ 834:	f7 01       	movw	r30, r14
+ 836:	61 91       	ld	r22, Z+
+ 838:	7f 01       	movw	r14, r30
+ 83a:	f8 01       	movw	r30, r16
+ 83c:	81 91       	ld	r24, Z+
+ 83e:	8f 01       	movw	r16, r30
+ 840:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 844:	c1 50       	subi	r28, 0x01	; 1
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+ 846:	b1 f7       	brne	.-20     	; 0x834 <Seg_Disp+0x8a>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(Number & (1<<LoopIndex)));
+				}				
+			}
+		}
+		RetVar = SEG_OK;
+ 848:	80 e0       	ldi	r24, 0x00	; 0
+ 84a:	82 c0       	rjmp	.+260    	; 0x950 <Seg_Disp+0x1a6>
+ 84c:	90 e0       	ldi	r25, 0x00	; 0
+ 84e:	7c 01       	movw	r14, r24
+ 850:	ee 0c       	add	r14, r14
+ 852:	ff 1c       	adc	r15, r15
+ 854:	ee 0c       	add	r14, r14
+ 856:	ff 1c       	adc	r15, r15
+ 858:	ee 0c       	add	r14, r14
+ 85a:	ff 1c       	adc	r15, r15
+ 85c:	8e 0d       	add	r24, r14
+ 85e:	9f 1d       	adc	r25, r15
+ 860:	9c 01       	movw	r18, r24
+ 862:	24 5e       	subi	r18, 0xE4	; 228
+ 864:	3e 4f       	sbci	r19, 0xFE	; 254
+ 866:	79 01       	movw	r14, r18
+	uint8_t LoopIndex;
+	if((Module < NO_OF_MODULES) && (Number < 10))
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 868:	c0 e0       	ldi	r28, 0x00	; 0
+ 86a:	d0 e0       	ldi	r29, 0x00	; 0
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], (Number & (1<<LoopIndex)));
+ 86c:	cc 24       	eor	r12, r12
+ 86e:	c3 94       	inc	r12
+ 870:	d1 2c       	mov	r13, r1
+ 872:	b6 01       	movw	r22, r12
+ 874:	0c 2e       	mov	r0, r28
+ 876:	02 c0       	rjmp	.+4      	; 0x87c <Seg_Disp+0xd2>
+ 878:	66 0f       	add	r22, r22
+ 87a:	77 1f       	adc	r23, r23
+ 87c:	0a 94       	dec	r0
+ 87e:	e2 f7       	brpl	.-8      	; 0x878 <Seg_Disp+0xce>
+ 880:	61 23       	and	r22, r17
+ 882:	f7 01       	movw	r30, r14
+ 884:	81 91       	ld	r24, Z+
+ 886:	7f 01       	movw	r14, r30
+ 888:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 88c:	21 96       	adiw	r28, 0x01	; 1
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], DigitsLUT[Number][LoopIndex]);
+				}
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+ 88e:	c4 30       	cpi	r28, 0x04	; 4
+ 890:	d1 05       	cpc	r29, r1
+ 892:	79 f7       	brne	.-34     	; 0x872 <Seg_Disp+0xc8>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(Number & (1<<LoopIndex)));
+				}				
+			}
+		}
+		RetVar = SEG_OK;
+ 894:	80 e0       	ldi	r24, 0x00	; 0
+ 896:	5c c0       	rjmp	.+184    	; 0x950 <Seg_Disp+0x1a6>
+				}				
+			}
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 898:	f9 01       	movw	r30, r18
+ 89a:	ee 0f       	add	r30, r30
+ 89c:	ff 1f       	adc	r31, r31
+ 89e:	ee 0f       	add	r30, r30
+ 8a0:	ff 1f       	adc	r31, r31
+ 8a2:	ee 0f       	add	r30, r30
+ 8a4:	ff 1f       	adc	r31, r31
+ 8a6:	2e 0f       	add	r18, r30
+ 8a8:	3f 1f       	adc	r19, r31
+ 8aa:	f9 01       	movw	r30, r18
+ 8ac:	e6 5e       	subi	r30, 0xE6	; 230
+ 8ae:	fe 4f       	sbci	r31, 0xFE	; 254
+ 8b0:	91 81       	ldd	r25, Z+1	; 0x01
+ 8b2:	91 30       	cpi	r25, 0x01	; 1
+ 8b4:	19 f5       	brne	.+70     	; 0x8fc <Seg_Disp+0x152>
+ 8b6:	f7 e0       	ldi	r31, 0x07	; 7
+ 8b8:	6f 9f       	mul	r22, r31
+ 8ba:	b0 01       	movw	r22, r0
+ 8bc:	11 24       	eor	r1, r1
+ 8be:	9b 01       	movw	r18, r22
+ 8c0:	2c 52       	subi	r18, 0x2C	; 44
+ 8c2:	3f 4f       	sbci	r19, 0xFF	; 255
+ 8c4:	79 01       	movw	r14, r18
+ 8c6:	90 e0       	ldi	r25, 0x00	; 0
+ 8c8:	8c 01       	movw	r16, r24
+ 8ca:	00 0f       	add	r16, r16
+ 8cc:	11 1f       	adc	r17, r17
+ 8ce:	00 0f       	add	r16, r16
+ 8d0:	11 1f       	adc	r17, r17
+ 8d2:	00 0f       	add	r16, r16
+ 8d4:	11 1f       	adc	r17, r17
+ 8d6:	80 0f       	add	r24, r16
+ 8d8:	91 1f       	adc	r25, r17
+ 8da:	8c 01       	movw	r16, r24
+ 8dc:	04 5e       	subi	r16, 0xE4	; 228
+ 8de:	1e 4f       	sbci	r17, 0xFE	; 254
+ 8e0:	c7 e0       	ldi	r28, 0x07	; 7
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(DigitsLUT[Number][LoopIndex]));
+ 8e2:	f7 01       	movw	r30, r14
+ 8e4:	61 91       	ld	r22, Z+
+ 8e6:	7f 01       	movw	r14, r30
+ 8e8:	60 95       	com	r22
+ 8ea:	f8 01       	movw	r30, r16
+ 8ec:	81 91       	ld	r24, Z+
+ 8ee:	8f 01       	movw	r16, r30
+ 8f0:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 8f4:	c1 50       	subi	r28, 0x01	; 1
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+ 8f6:	a9 f7       	brne	.-22     	; 0x8e2 <Seg_Disp+0x138>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(Number & (1<<LoopIndex)));
+				}				
+			}
+		}
+		RetVar = SEG_OK;
+ 8f8:	80 e0       	ldi	r24, 0x00	; 0
+ 8fa:	2a c0       	rjmp	.+84     	; 0x950 <Seg_Disp+0x1a6>
+ 8fc:	90 e0       	ldi	r25, 0x00	; 0
+ 8fe:	ec 01       	movw	r28, r24
+ 900:	cc 0f       	add	r28, r28
+ 902:	dd 1f       	adc	r29, r29
+ 904:	cc 0f       	add	r28, r28
+ 906:	dd 1f       	adc	r29, r29
+ 908:	cc 0f       	add	r28, r28
+ 90a:	dd 1f       	adc	r29, r29
+ 90c:	8c 0f       	add	r24, r28
+ 90e:	9d 1f       	adc	r25, r29
+ 910:	ec 01       	movw	r28, r24
+ 912:	c4 5e       	subi	r28, 0xE4	; 228
+ 914:	de 4f       	sbci	r29, 0xFE	; 254
+				}				
+			}
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 916:	c1 2c       	mov	r12, r1
+ 918:	d1 2c       	mov	r13, r1
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(Number & (1<<LoopIndex)));
+ 91a:	ee 24       	eor	r14, r14
+ 91c:	e3 94       	inc	r14
+ 91e:	f1 2c       	mov	r15, r1
+ 920:	b7 01       	movw	r22, r14
+ 922:	0c 2c       	mov	r0, r12
+ 924:	02 c0       	rjmp	.+4      	; 0x92a <Seg_Disp+0x180>
+ 926:	66 0f       	add	r22, r22
+ 928:	77 1f       	adc	r23, r23
+ 92a:	0a 94       	dec	r0
+ 92c:	e2 f7       	brpl	.-8      	; 0x926 <Seg_Disp+0x17c>
+ 92e:	61 23       	and	r22, r17
+ 930:	60 95       	com	r22
+ 932:	89 91       	ld	r24, Y+
+ 934:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 938:	ff ef       	ldi	r31, 0xFF	; 255
+ 93a:	cf 1a       	sub	r12, r31
+ 93c:	df 0a       	sbc	r13, r31
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(DigitsLUT[Number][LoopIndex]));
+				}
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+ 93e:	24 e0       	ldi	r18, 0x04	; 4
+ 940:	c2 16       	cp	r12, r18
+ 942:	d1 04       	cpc	r13, r1
+ 944:	69 f7       	brne	.-38     	; 0x920 <Seg_Disp+0x176>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], ~(Number & (1<<LoopIndex)));
+				}				
+			}
+		}
+		RetVar = SEG_OK;
+ 946:	80 e0       	ldi	r24, 0x00	; 0
+ 948:	03 c0       	rjmp	.+6      	; 0x950 <Seg_Disp+0x1a6>
+	}
+	else
+	{
+		RetVar = SEG_NOK;
+ 94a:	81 e0       	ldi	r24, 0x01	; 1
+ 94c:	01 c0       	rjmp	.+2      	; 0x950 <Seg_Disp+0x1a6>
+ 94e:	81 e0       	ldi	r24, 0x01	; 1
+	}
+	return RetVar;
+}
+ 950:	df 91       	pop	r29
+ 952:	cf 91       	pop	r28
+ 954:	1f 91       	pop	r17
+ 956:	0f 91       	pop	r16
+ 958:	ff 90       	pop	r15
+ 95a:	ef 90       	pop	r14
+ 95c:	df 90       	pop	r13
+ 95e:	cf 90       	pop	r12
+ 960:	08 95       	ret
+
+00000962 <Seg_Off>:
+
+Seg_CheckType Seg_Off(uint8_t Module)
+{
+ 962:	1f 93       	push	r17
+ 964:	cf 93       	push	r28
+ 966:	df 93       	push	r29
+	Seg_CheckType RetVar;
+	uint8_t LoopIndex;
+	if(Module < NO_OF_MODULES)
+ 968:	84 30       	cpi	r24, 0x04	; 4
+ 96a:	08 f0       	brcs	.+2      	; 0x96e <Seg_Off+0xc>
+ 96c:	7b c0       	rjmp	.+246    	; 0xa64 <Seg_Off+0x102>
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+ 96e:	28 2f       	mov	r18, r24
+ 970:	30 e0       	ldi	r19, 0x00	; 0
+ 972:	f9 01       	movw	r30, r18
+ 974:	ee 0f       	add	r30, r30
+ 976:	ff 1f       	adc	r31, r31
+ 978:	ee 0f       	add	r30, r30
+ 97a:	ff 1f       	adc	r31, r31
+ 97c:	ee 0f       	add	r30, r30
+ 97e:	ff 1f       	adc	r31, r31
+ 980:	e2 0f       	add	r30, r18
+ 982:	f3 1f       	adc	r31, r19
+ 984:	e6 5e       	subi	r30, 0xE6	; 230
+ 986:	fe 4f       	sbci	r31, 0xFE	; 254
+ 988:	90 81       	ld	r25, Z
+ 98a:	91 30       	cpi	r25, 0x01	; 1
+ 98c:	89 f5       	brne	.+98     	; 0x9f0 <Seg_Off+0x8e>
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 98e:	f9 01       	movw	r30, r18
+ 990:	ee 0f       	add	r30, r30
+ 992:	ff 1f       	adc	r31, r31
+ 994:	ee 0f       	add	r30, r30
+ 996:	ff 1f       	adc	r31, r31
+ 998:	ee 0f       	add	r30, r30
+ 99a:	ff 1f       	adc	r31, r31
+ 99c:	2e 0f       	add	r18, r30
+ 99e:	3f 1f       	adc	r19, r31
+ 9a0:	f9 01       	movw	r30, r18
+ 9a2:	e6 5e       	subi	r30, 0xE6	; 230
+ 9a4:	fe 4f       	sbci	r31, 0xFE	; 254
+ 9a6:	91 81       	ldd	r25, Z+1	; 0x01
+ 9a8:	91 30       	cpi	r25, 0x01	; 1
+ 9aa:	61 f4       	brne	.+24     	; 0x9c4 <Seg_Off+0x62>
+ 9ac:	e9 01       	movw	r28, r18
+ 9ae:	c4 5e       	subi	r28, 0xE4	; 228
+ 9b0:	de 4f       	sbci	r29, 0xFE	; 254
+ 9b2:	17 e0       	ldi	r17, 0x07	; 7
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+ 9b4:	60 e0       	ldi	r22, 0x00	; 0
+ 9b6:	89 91       	ld	r24, Y+
+ 9b8:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 9bc:	11 50       	subi	r17, 0x01	; 1
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+ 9be:	d1 f7       	brne	.-12     	; 0x9b4 <Seg_Off+0x52>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+				}
+			}
+		}
+		RetVar = SEG_OK;
+ 9c0:	80 e0       	ldi	r24, 0x00	; 0
+ 9c2:	51 c0       	rjmp	.+162    	; 0xa66 <Seg_Off+0x104>
+ 9c4:	90 e0       	ldi	r25, 0x00	; 0
+ 9c6:	ec 01       	movw	r28, r24
+ 9c8:	cc 0f       	add	r28, r28
+ 9ca:	dd 1f       	adc	r29, r29
+ 9cc:	cc 0f       	add	r28, r28
+ 9ce:	dd 1f       	adc	r29, r29
+ 9d0:	cc 0f       	add	r28, r28
+ 9d2:	dd 1f       	adc	r29, r29
+ 9d4:	8c 0f       	add	r24, r28
+ 9d6:	9d 1f       	adc	r25, r29
+ 9d8:	ec 01       	movw	r28, r24
+ 9da:	c4 5e       	subi	r28, 0xE4	; 228
+ 9dc:	de 4f       	sbci	r29, 0xFE	; 254
+	uint8_t LoopIndex;
+	if(Module < NO_OF_MODULES)
+	{
+		if(Seg_ConfigData[Module].ConnMode == COMMON_CATHODE)
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 9de:	14 e0       	ldi	r17, 0x04	; 4
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0xFF);
+ 9e0:	6f ef       	ldi	r22, 0xFF	; 255
+ 9e2:	89 91       	ld	r24, Y+
+ 9e4:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ 9e8:	11 50       	subi	r17, 0x01	; 1
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+				}
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+ 9ea:	d1 f7       	brne	.-12     	; 0x9e0 <Seg_Off+0x7e>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+				}
+			}
+		}
+		RetVar = SEG_OK;
+ 9ec:	80 e0       	ldi	r24, 0x00	; 0
+ 9ee:	3b c0       	rjmp	.+118    	; 0xa66 <Seg_Off+0x104>
+				}				
+			}
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ 9f0:	f9 01       	movw	r30, r18
+ 9f2:	ee 0f       	add	r30, r30
+ 9f4:	ff 1f       	adc	r31, r31
+ 9f6:	ee 0f       	add	r30, r30
+ 9f8:	ff 1f       	adc	r31, r31
+ 9fa:	ee 0f       	add	r30, r30
+ 9fc:	ff 1f       	adc	r31, r31
+ 9fe:	2e 0f       	add	r18, r30
+ a00:	3f 1f       	adc	r19, r31
+ a02:	f9 01       	movw	r30, r18
+ a04:	e6 5e       	subi	r30, 0xE6	; 230
+ a06:	fe 4f       	sbci	r31, 0xFE	; 254
+ a08:	91 81       	ldd	r25, Z+1	; 0x01
+ a0a:	91 30       	cpi	r25, 0x01	; 1
+ a0c:	b1 f4       	brne	.+44     	; 0xa3a <Seg_Off+0xd8>
+ a0e:	90 e0       	ldi	r25, 0x00	; 0
+ a10:	ec 01       	movw	r28, r24
+ a12:	cc 0f       	add	r28, r28
+ a14:	dd 1f       	adc	r29, r29
+ a16:	cc 0f       	add	r28, r28
+ a18:	dd 1f       	adc	r29, r29
+ a1a:	cc 0f       	add	r28, r28
+ a1c:	dd 1f       	adc	r29, r29
+ a1e:	8c 0f       	add	r24, r28
+ a20:	9d 1f       	adc	r25, r29
+ a22:	ec 01       	movw	r28, r24
+ a24:	c4 5e       	subi	r28, 0xE4	; 228
+ a26:	de 4f       	sbci	r29, 0xFE	; 254
+ a28:	17 e0       	ldi	r17, 0x07	; 7
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0xFF);
+ a2a:	6f ef       	ldi	r22, 0xFF	; 255
+ a2c:	89 91       	ld	r24, Y+
+ a2e:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ a32:	11 50       	subi	r17, 0x01	; 1
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+			{
+				for(LoopIndex = 0; LoopIndex < 7; LoopIndex++)
+ a34:	d1 f7       	brne	.-12     	; 0xa2a <Seg_Off+0xc8>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+				}
+			}
+		}
+		RetVar = SEG_OK;
+ a36:	80 e0       	ldi	r24, 0x00	; 0
+ a38:	16 c0       	rjmp	.+44     	; 0xa66 <Seg_Off+0x104>
+ a3a:	90 e0       	ldi	r25, 0x00	; 0
+ a3c:	ec 01       	movw	r28, r24
+ a3e:	cc 0f       	add	r28, r28
+ a40:	dd 1f       	adc	r29, r29
+ a42:	cc 0f       	add	r28, r28
+ a44:	dd 1f       	adc	r29, r29
+ a46:	cc 0f       	add	r28, r28
+ a48:	dd 1f       	adc	r29, r29
+ a4a:	c8 0f       	add	r28, r24
+ a4c:	d9 1f       	adc	r29, r25
+ a4e:	c4 5e       	subi	r28, 0xE4	; 228
+ a50:	de 4f       	sbci	r29, 0xFE	; 254
+				}				
+			}
+		}
+		else
+		{
+			if(Seg_ConfigData[Module].ConnType == SEVEN_PINS)
+ a52:	14 e0       	ldi	r17, 0x04	; 4
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+ a54:	60 e0       	ldi	r22, 0x00	; 0
+ a56:	89 91       	ld	r24, Y+
+ a58:	0e 94 68 01 	call	0x2d0	; 0x2d0 <GPIO_Write>
+ a5c:	11 50       	subi	r17, 0x01	; 1
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0xFF);
+				}
+			}
+			else
+			{
+				for(LoopIndex = 0; LoopIndex < 4; LoopIndex++)
+ a5e:	d1 f7       	brne	.-12     	; 0xa54 <Seg_Off+0xf2>
+				{
+					GPIO_Write(Seg_ConfigData[Module].SegPins[LoopIndex], 0x00);
+				}
+			}
+		}
+		RetVar = SEG_OK;
+ a60:	80 e0       	ldi	r24, 0x00	; 0
+ a62:	01 c0       	rjmp	.+2      	; 0xa66 <Seg_Off+0x104>
+	}
+	else
+	{
+		RetVar = SEG_NOK;
+ a64:	81 e0       	ldi	r24, 0x01	; 1
+	}
+	return RetVar;
+ a66:	df 91       	pop	r29
+ a68:	cf 91       	pop	r28
+ a6a:	1f 91       	pop	r17
+ a6c:	08 95       	ret
+
+00000a6e <_exit>:
+ a6e:	f8 94       	cli
+
+00000a70 <__stop_program>:
+ a70:	ff cf       	rjmp	.-2      	; 0xa70 <__stop_program>
